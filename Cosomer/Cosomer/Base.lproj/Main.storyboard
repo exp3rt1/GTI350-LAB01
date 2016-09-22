@@ -93,6 +93,9 @@
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="623" y="147" width="120" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="period_button_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tOM-PE-B9l"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6kT-Fw-ZJ2">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
@@ -273,6 +276,9 @@
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="290" y="484" width="75" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="team1_add_goal_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yyF-sI-ci7"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Io6-Uw-Ptt">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -439,14 +445,6 @@
                                     <rect key="frame" x="724" y="356" width="50" height="30"/>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4O-2w-33q">
-                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="724" y="394" width="50" height="30"/>
-                                </variation>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xbb-TU-nyZ">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -586,6 +584,9 @@
                                 <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="994" y="484" width="75" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="team2_add_goal_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gea-eq-WuA"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MiC-Yb-Zce">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -720,6 +721,14 @@
                                     <rect key="frame" x="906" y="484" width="80" height="30"/>
                                 </variation>
                             </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="f4O-2w-33q">
+                                <rect key="frame" x="-25" y="-30" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="724" y="394" width="50" height="30"/>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -770,7 +779,6 @@
                                 <exclude reference="4QS-Lg-aSn"/>
                                 <exclude reference="PUU-8E-FsF"/>
                                 <exclude reference="qVH-eZ-4TU"/>
-                                <exclude reference="f4O-2w-33q"/>
                                 <exclude reference="xbb-TU-nyZ"/>
                                 <exclude reference="psl-es-Vwl"/>
                                 <exclude reference="XFp-io-A5M"/>
@@ -803,6 +811,7 @@
                                 <exclude reference="E5m-up-v1H"/>
                                 <exclude reference="QkL-87-OYt"/>
                                 <exclude reference="jKA-sl-RcI"/>
+                                <exclude reference="f4O-2w-33q"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -853,7 +862,6 @@
                                 <include reference="4QS-Lg-aSn"/>
                                 <include reference="PUU-8E-FsF"/>
                                 <include reference="qVH-eZ-4TU"/>
-                                <include reference="f4O-2w-33q"/>
                                 <include reference="xbb-TU-nyZ"/>
                                 <include reference="psl-es-Vwl"/>
                                 <include reference="XFp-io-A5M"/>
@@ -886,11 +894,76 @@
                                 <include reference="E5m-up-v1H"/>
                                 <include reference="QkL-87-OYt"/>
                                 <include reference="jKA-sl-RcI"/>
+                                <include reference="f4O-2w-33q"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro"/>
+                    <connections>
+                        <outlet property="period" destination="zf0-nw-aMn" id="9RK-jN-Q4Z"/>
+                        <outlet property="period_button" destination="7G5-sE-hSj" id="RWi-bu-t3B"/>
+                        <outlet property="team1_assist1" destination="ID8-Sc-VHS" id="cvH-Os-9zd"/>
+                        <outlet property="team1_assist2" destination="CoG-Wr-vMV" id="h1q-Vk-d8A"/>
+                        <outlet property="team1_name" destination="7jz-yv-dcc" id="2jx-fJ-gCZ"/>
+                        <outlet property="team1_p1_assists" destination="277-58-vua" id="YQD-vQ-mH0"/>
+                        <outlet property="team1_p1_firstname" destination="wPf-vw-wPS" id="fmD-7j-A0X"/>
+                        <outlet property="team1_p1_goals" destination="CEl-am-qP3" id="uI8-fD-hC6"/>
+                        <outlet property="team1_p1_lastname" destination="1LY-px-QQ3" id="Iqi-jo-11G"/>
+                        <outlet property="team1_p1_number" destination="6kT-Fw-ZJ2" id="bim-UD-ziX"/>
+                        <outlet property="team1_p2_assists" destination="4wl-qE-kLB" id="qTn-3p-pZO"/>
+                        <outlet property="team1_p2_firstname" destination="vPW-fW-ohf" id="d13-eP-mmG"/>
+                        <outlet property="team1_p2_goals" destination="Iur-P7-3jI" id="Ly0-m0-OUg"/>
+                        <outlet property="team1_p2_lastname" destination="Sul-DY-l4F" id="KOM-ea-N9d"/>
+                        <outlet property="team1_p2_number" destination="E9m-4I-0Gr" id="cZ6-kx-aw7"/>
+                        <outlet property="team1_p3_assists" destination="S1T-NV-wZk" id="dUr-ZY-qGf"/>
+                        <outlet property="team1_p3_firstname" destination="En0-62-izf" id="eHV-mn-hnF"/>
+                        <outlet property="team1_p3_goals" destination="KUr-gr-LF8" id="bDj-nz-M9V"/>
+                        <outlet property="team1_p3_lastname" destination="nlj-7h-JWb" id="5ve-Z5-11E"/>
+                        <outlet property="team1_p3_number" destination="Lrq-mP-qNW" id="5c8-bb-2Mu"/>
+                        <outlet property="team1_p4_assists" destination="8Mb-Cf-xyn" id="86Y-NE-YaK"/>
+                        <outlet property="team1_p4_firstname" destination="8td-X8-TO6" id="dfh-mZ-k1t"/>
+                        <outlet property="team1_p4_goals" destination="Pwg-LM-z9R" id="BDH-91-BBq"/>
+                        <outlet property="team1_p4_lastname" destination="Mmm-00-nXB" id="DpD-3F-Edx"/>
+                        <outlet property="team1_p4_number" destination="AFX-jp-UEY" id="swH-ya-b0C"/>
+                        <outlet property="team1_p5_assists" destination="nhb-oK-8cL" id="geS-cV-PSi"/>
+                        <outlet property="team1_p5_firstname" destination="6VF-dp-E41" id="pKc-af-pLO"/>
+                        <outlet property="team1_p5_goals" destination="Q9M-oy-CkT" id="xEs-Ky-8Za"/>
+                        <outlet property="team1_p5_lastname" destination="iMk-hr-Ze6" id="UYy-Br-CPh"/>
+                        <outlet property="team1_p5_number" destination="9Iw-Qz-W0x" id="rTQ-eb-dLZ"/>
+                        <outlet property="team1_score" destination="7jR-p8-Asy" id="tAi-db-3M9"/>
+                        <outlet property="team1_scorer" destination="B6Y-4a-1SP" id="G8k-Fm-BZa"/>
+                        <outlet property="team2_assist1" destination="QkL-87-OYt" id="aWA-Rx-y5a"/>
+                        <outlet property="team2_assist2" destination="jKA-sl-RcI" id="Hre-zM-eiM"/>
+                        <outlet property="team2_name" destination="orH-53-xC1" id="s8g-WH-uCZ"/>
+                        <outlet property="team2_p1_assists" destination="KfF-SV-YxY" id="VxX-L9-qpv"/>
+                        <outlet property="team2_p1_firstname" destination="xbb-TU-nyZ" id="rxs-IW-25q"/>
+                        <outlet property="team2_p1_goals" destination="pFT-Ix-ftk" id="meb-Qo-oP4"/>
+                        <outlet property="team2_p1_lastname" destination="psl-es-Vwl" id="4pn-DE-ej2"/>
+                        <outlet property="team2_p1_number" destination="byH-sP-s68" id="kh7-JK-X4t"/>
+                        <outlet property="team2_p2_assists" destination="a58-bI-qEJ" id="hYw-2a-nA1"/>
+                        <outlet property="team2_p2_firstname" destination="XFp-io-A5M" id="NGW-aH-CXK"/>
+                        <outlet property="team2_p2_goals" destination="FOe-bP-NPo" id="4pX-Ah-CZl"/>
+                        <outlet property="team2_p2_lastname" destination="hA1-J9-V6I" id="QN5-b4-BNs"/>
+                        <outlet property="team2_p2_number" destination="4QS-Lg-aSn" id="HmG-rl-SaD"/>
+                        <outlet property="team2_p3_assists" destination="ycr-ZX-M3H" id="3jk-q7-RT3"/>
+                        <outlet property="team2_p3_firstname" destination="8fI-Zg-guS" id="Ruh-M1-1qd"/>
+                        <outlet property="team2_p3_goals" destination="VGT-a2-zmH" id="fcw-QI-4BF"/>
+                        <outlet property="team2_p3_lastname" destination="JUW-wV-kys" id="OAi-Os-OO7"/>
+                        <outlet property="team2_p3_number" destination="PUU-8E-FsF" id="YR3-V3-5VQ"/>
+                        <outlet property="team2_p4_assists" destination="F5P-Fa-iiy" id="dAd-3l-mF2"/>
+                        <outlet property="team2_p4_firstname" destination="NGr-Z3-Mwg" id="piV-rS-axu"/>
+                        <outlet property="team2_p4_goals" destination="Z73-VI-bxX" id="2GR-Pe-IwR"/>
+                        <outlet property="team2_p4_lastname" destination="fUm-hd-hR6" id="4zN-IX-YDZ"/>
+                        <outlet property="team2_p4_number" destination="qVH-eZ-4TU" id="Ztt-cr-HBZ"/>
+                        <outlet property="team2_p5_assists" destination="RZ8-nI-6FO" id="AvT-Dr-1nt"/>
+                        <outlet property="team2_p5_firstname" destination="PPA-4r-eNE" id="dM1-ul-6ON"/>
+                        <outlet property="team2_p5_goals" destination="0Sl-wS-IkO" id="VvA-8R-hUW"/>
+                        <outlet property="team2_p5_lastname" destination="ZjU-uS-uEZ" id="gBd-F2-BE1"/>
+                        <outlet property="team2_p5_number" destination="f4O-2w-33q" id="zhz-9i-WFD"/>
+                        <outlet property="team2_score" destination="Bnr-Z3-wUG" id="fx4-Pe-HMl"/>
+                        <outlet property="team2_scorer" destination="xXL-2t-bMq" id="Eiw-5A-r1a"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
