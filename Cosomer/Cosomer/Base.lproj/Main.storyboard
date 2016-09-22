@@ -44,6 +44,16 @@
                                     <rect key="frame" x="628" y="48" width="76" height="21"/>
                                 </variation>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCQ-bH-9bi">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="377" y="385" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="nextPeriode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nmG-bk-WxH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -51,6 +61,7 @@
                                 <exclude reference="Byy-Pl-imk"/>
                                 <exclude reference="rSI-q0-Pnq"/>
                                 <exclude reference="vL3-3m-bPS"/>
+                                <exclude reference="CCQ-bH-9bi"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -58,9 +69,13 @@
                                 <include reference="Byy-Pl-imk"/>
                                 <include reference="rSI-q0-Pnq"/>
                                 <include reference="vL3-3m-bPS"/>
+                                <include reference="CCQ-bH-9bi"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="periode" destination="vL3-3m-bPS" id="NMm-Hq-9d3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

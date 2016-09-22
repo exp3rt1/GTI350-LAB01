@@ -9,6 +9,9 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+- (IBAction)nextPeriode:(UIButton *)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *periode;
 
 @end
 
@@ -24,4 +27,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)nextPeriode:(UIButton *)sender {
+    self.periode.text = @"Periode 2";
+}
 @end
