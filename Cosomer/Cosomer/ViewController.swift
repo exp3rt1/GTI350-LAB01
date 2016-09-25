@@ -103,7 +103,62 @@ class ViewController: UIViewController {
 
 
     @IBAction func period_button_click(sender: UIButton) {
-        period_button.setTitle("allo", forState: .Normal)
+        let label_button:String = (period_button.titleLabel?.text)! as String
+        switch label_button {
+        case "Débuter":
+            team1_name.enabled = false
+            team2_name.enabled = false
+            
+            team1_p1_number.enabled = false
+            team1_p1_firstname.enabled = false
+            team1_p1_lastname.enabled = false
+            team1_p2_number.enabled = false
+            team1_p2_firstname.enabled = false
+            team1_p2_lastname.enabled = false
+            team1_p3_number.enabled = false
+            team1_p3_firstname.enabled = false
+            team1_p3_lastname.enabled = false
+            team1_p4_number.enabled = false
+            team1_p4_firstname.enabled = false
+            team1_p4_lastname.enabled = false
+            team1_p5_number.enabled = false
+            team1_p5_firstname.enabled = false
+            team1_p5_lastname.enabled = false
+            
+            team2_p1_number.enabled = false
+            team2_p1_firstname.enabled = false
+            team2_p1_lastname.enabled = false
+            team2_p2_number.enabled = false
+            team2_p2_firstname.enabled = false
+            team2_p2_lastname.enabled = false
+            team2_p3_number.enabled = false
+            team2_p3_firstname.enabled = false
+            team2_p3_lastname.enabled = false
+            team2_p4_number.enabled = false
+            team2_p4_firstname.enabled = false
+            team2_p4_lastname.enabled = false
+            team2_p5_number.enabled = false
+            team2_p5_firstname.enabled = false
+            team2_p5_lastname.enabled = false
+            
+            period_button.setTitle("Prochaine période", forState: .Normal)
+            period.text = "1"
+            break
+        case "Prochaine période":
+            if(period.text == "1") {
+                period.text = "2"
+            } else {
+                period.text = "3"
+                period_button.setTitle("Terminer la partie", forState: .Normal)
+            }
+            break
+        default:
+            print("Default case")
+            break
+        }
+        if period_button.titleLabel?.text == "Débuter" {
+            
+        }
     }
     
     @IBAction func team1_add_goal_click(sender: UIButton) {
