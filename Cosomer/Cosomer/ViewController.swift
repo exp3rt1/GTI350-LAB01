@@ -117,9 +117,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         // Picker views
         self.team1_goal_picker.layer.borderColor = UIColor.grayColor().CGColor
         self.team1_goal_picker.layer.borderWidth = 1
+        self.team1_goal_picker.hidden = true
+        self.team1_add_goal.hidden = true
         
         self.team2_goal_picker.layer.borderColor = UIColor.grayColor().CGColor
         self.team2_goal_picker.layer.borderWidth = 1
+        self.team2_goal_picker.hidden = true
+        self.team2_add_goal.hidden = true
         
         self.team1_goal_picker.dataSource = self
         self.team1_goal_picker.delegate = self
@@ -214,6 +218,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         team2_p5_number.enabled = false
         team2_p5_firstname.enabled = false
         team2_p5_lastname.enabled = false
+        
+        self.team1_goal_picker.hidden = false
+        self.team1_add_goal.hidden = false
+        self.team2_goal_picker.hidden = false
+        self.team2_add_goal.hidden = false
         
         period_button.setTitle("Prochaine période", forState: .Normal)
         period.text = "1"
