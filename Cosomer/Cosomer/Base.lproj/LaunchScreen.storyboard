@@ -14,14 +14,32 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="O8a-1A-yvi">
+                                <rect key="frame" x="446" y="306" width="475" height="506"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="512" id="M35-aU-djs"/>
+                                    <constraint firstAttribute="height" constant="512" id="bfg-oM-LUJ"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="O8a-1A-yvi" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="V1M-ld-Hhw"/>
+                            <constraint firstItem="O8a-1A-yvi" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mFh-2w-Pd7"/>
+                        </constraints>
                     </view>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="144" y="437"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="LaunchImage" width="256" height="256"/>
+    </resources>
 </document>
