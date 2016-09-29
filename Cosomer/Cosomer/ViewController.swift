@@ -182,54 +182,31 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let button = pickerView.tag == 0 ? team1_add_goal : team2_add_goal
         
-        if (component == 0) {
-            let index_assist1:Int = pickerView.selectedRowInComponent(1)
-            let index_assist2:Int = pickerView.selectedRowInComponent(2)
-            if (row == 0) {
-                button.enabled = false
-            } else if(row == index_assist1 || row == index_assist2) {
-                button.enabled = false
-            } else if(index_assist2 != 0 && index_assist1 == 0) {
-                button.enabled = false
-            } else {
-                button.enabled = true
+        var enabled = false
+        let index_goal:Int = pickerView.selectedRowInComponent(0)
+        let index_assist1:Int = pickerView.selectedRowInComponent(1)
+        let index_assist2:Int = pickerView.selectedRowInComponent(2)
+        
+        if (index_goal != 0) {
+            if (index_assist1 != 0) {
+                if (index_assist2 != 0) {
+                    if (index_goal != index_assist1 && index_assist1 != index_assist2 && index_assist2 != index_goal) {
+                        enabled = true;
+                    }
+                }
+                else if (index_goal != index_assist1) {
+                    enabled = true;
+                }
+            }
+            else {
+                if (index_assist2 == 0) {
+                    enabled = true;
+                }
             }
         }
-        else if (component == 1) {
-            let index_goal:Int = pickerView.selectedRowInComponent(0)
-            let index_assist2:Int = pickerView.selectedRowInComponent(2)
-            if(row == 0 && index_assist2 != 0) {
-                button.enabled = false
-            } else if(index_goal == 0 && row != 0) {
-                button.enabled = false
-            } else if(index_goal == row || (row == index_assist2 && row != 0)) {
-                button.enabled = false
-            } else if (index_goal == index_assist2) {
-                button.enabled = false
-            }else {
-                button.enabled = true
-            }
-        }
-        else if (component == 2) {
-            let index_goal:Int = pickerView.selectedRowInComponent(0)
-            let index_assist:Int = pickerView.selectedRowInComponent(1)
-            
-            if(index_goal == 0) {
-                button.enabled = false
-            } else if(row == 0 && index_assist == 0 && index_goal != 0) {
-                button.enabled = true
-            } else if (index_assist == 0) {
-                button.enabled = false
-            } else if (row == index_goal) {
-                button.enabled = false
-            } else if (row == index_assist && row != 0) {
-                button.enabled = false
-            } else if(index_goal == index_assist) {
-                button.enabled = false
-            } else {
-                button.enabled = true
-            }
-        }
+        
+        
+        button.enabled = enabled
     }
     
     func startGameFields() {
