@@ -9,9 +9,9 @@
 import UIKit
 
 class Player {
-    var number: Int
-    var firstname: String
-    var lastname: String
+    var number: Int = 0
+    var firstname: String = "DefaultFirstName"
+    var lastname: String = "DefaultLastName"
     var goals: Int = 0
     var passes: Int = 0
     
@@ -178,6 +178,202 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             }
         }
     }
+    
+    func startGameFields() {
+        team1_name.enabled = false
+        team2_name.enabled = false
+        
+        team1_p1_number.enabled = false
+        team1_p1_firstname.enabled = false
+        team1_p1_lastname.enabled = false
+        team1_p2_number.enabled = false
+        team1_p2_firstname.enabled = false
+        team1_p2_lastname.enabled = false
+        team1_p3_number.enabled = false
+        team1_p3_firstname.enabled = false
+        team1_p3_lastname.enabled = false
+        team1_p4_number.enabled = false
+        team1_p4_firstname.enabled = false
+        team1_p4_lastname.enabled = false
+        team1_p5_number.enabled = false
+        team1_p5_firstname.enabled = false
+        team1_p5_lastname.enabled = false
+        
+        team2_p1_number.enabled = false
+        team2_p1_firstname.enabled = false
+        team2_p1_lastname.enabled = false
+        team2_p2_number.enabled = false
+        team2_p2_firstname.enabled = false
+        team2_p2_lastname.enabled = false
+        team2_p3_number.enabled = false
+        team2_p3_firstname.enabled = false
+        team2_p3_lastname.enabled = false
+        team2_p4_number.enabled = false
+        team2_p4_firstname.enabled = false
+        team2_p4_lastname.enabled = false
+        team2_p5_number.enabled = false
+        team2_p5_firstname.enabled = false
+        team2_p5_lastname.enabled = false
+        
+        period_button.setTitle("Prochaine période", forState: .Normal)
+        period.text = "1"
+        
+        
+        self.team1_players.append(
+            Player(
+                number: (team1_p1_number.text == nil) ? Int(team1_p1_number.text!)! : 0,
+                firstname: (team1_p1_firstname == nil) ? team1_p1_firstname.text! : "Player1_FirstName",
+                lastname: (team1_p1_lastname == nil) ? team1_p1_lastname.text! : "Player1_LastName"
+            )
+        )
+        self.team1_players.append(
+            Player(
+                number: (team1_p2_number.text == nil) ? Int(team1_p2_number.text!)! : 0,
+                firstname: (team1_p2_firstname == nil) ? team1_p2_firstname.text! : "Player2_FirstName",
+                lastname: (team1_p2_lastname == nil) ? team1_p2_lastname.text! : "Player2_LastName"
+            )
+        )
+        self.team1_players.append(
+            Player(
+                number: (team1_p3_number.text == nil) ? Int(team1_p3_number.text!)! : 0,
+                firstname: (team1_p3_firstname == nil) ? team1_p3_firstname.text! : "Player3_FirstName",
+                lastname: (team1_p3_lastname == nil) ? team1_p3_lastname.text! : "Player3_LastName"
+            )
+        )
+        self.team1_players.append(
+            Player(
+                number: (team1_p4_number.text == nil) ? Int(team1_p4_number.text!)! : 0,
+                firstname: (team1_p4_firstname == nil) ? team1_p4_firstname.text! : "Player4_FirstName",
+                lastname: (team1_p4_lastname == nil) ? team1_p4_lastname.text! : "Player4_LastName"
+            )
+        )
+        self.team1_players.append(
+            Player(
+                number: (team1_p5_number.text == nil) ? Int(team1_p5_number.text!)! : 0,
+                firstname: (team1_p5_firstname == nil) ? team1_p5_firstname.text! : "Player5_FirstName",
+                lastname: (team1_p5_lastname == nil) ? team1_p5_lastname.text! : "Player5_LastName"
+            )
+        )
+        self.team1_goal_picker.reloadAllComponents()
+        
+        self.team2_players.append(
+            Player(
+                number: (team2_p1_number.text == nil) ? Int(team2_p1_number.text!)! : 0,
+                firstname: (team2_p1_firstname == nil) ? team2_p1_firstname.text! : "Player1_FirstName",
+                lastname: (team2_p1_lastname == nil) ? team2_p1_lastname.text! : "Player1_LastName"
+            )
+        )
+        self.team2_players.append(
+            Player(
+                number: (team2_p2_number.text == nil) ? Int(team2_p2_number.text!)! : 0,
+                firstname: (team2_p2_firstname == nil) ? team2_p2_firstname.text! : "Player2_FirstName",
+                lastname: (team2_p2_lastname == nil) ? team2_p2_lastname.text! : "Player2_LastName"
+            )
+        )
+        self.team2_players.append(
+            Player(
+                number: (team2_p3_number.text == nil) ? Int(team2_p3_number.text!)! : 0,
+                firstname: (team2_p3_firstname == nil) ? team2_p3_firstname.text! : "Player3_FirstName",
+                lastname: (team2_p3_lastname == nil) ? team2_p3_lastname.text! : "Player3_LastName"
+            )
+        )
+        self.team2_players.append(
+            Player(
+                number: (team2_p4_number.text == nil) ? Int(team2_p4_number.text!)! : 0,
+                firstname: (team2_p4_firstname == nil) ? team2_p4_firstname.text! : "Player4_FirstName",
+                lastname: (team2_p4_lastname == nil) ? team2_p4_lastname.text! : "Player4_LastName"
+            )
+        )
+        self.team2_players.append(
+            Player(
+                number: (team2_p5_number.text == nil) ? Int(team2_p5_number.text!)! : 0,
+                firstname: (team2_p5_firstname == nil) ? team2_p5_firstname.text! : "Player5_FirstName",
+                lastname: (team2_p5_lastname == nil) ? team2_p5_lastname.text! : "Player5_LastName"
+            )
+        )
+        self.team2_goal_picker.reloadAllComponents()
+        
+        
+        self.updateFields()
+        self.updateGoals()
+    }
+    
+    func updateFields() {
+        team1_p1_number.text = String(team1_players[0].number)
+        team1_p1_firstname.text = team1_players[0].firstname
+        team1_p1_lastname.text = team1_players[0].lastname
+        
+        team1_p2_number.text = String(team1_players[1].number)
+        team1_p2_firstname.text = team1_players[1].firstname
+        team1_p2_lastname.text = team1_players[1].lastname
+        
+        team1_p3_number.text = String(team1_players[2].number)
+        team1_p3_firstname.text = team1_players[2].firstname
+        team1_p3_lastname.text = team1_players[2].lastname
+        
+        team1_p4_number.text = String(team1_players[3].number)
+        team1_p4_firstname.text = team1_players[3].firstname
+        team1_p4_lastname.text = team1_players[3].lastname
+        
+        team1_p5_number.text = String(team1_players[4].number)
+        team1_p5_firstname.text = team1_players[4].firstname
+        team1_p5_lastname.text = team1_players[4].lastname
+        
+        
+        
+        team2_p1_number.text = String(team2_players[0].number)
+        team2_p1_firstname.text = team2_players[0].firstname
+        team2_p1_lastname.text = team2_players[0].lastname
+
+        team2_p2_number.text = String(team2_players[1].number)
+        team2_p2_firstname.text = team2_players[1].firstname
+        team2_p2_lastname.text = team2_players[1].lastname
+        
+        team2_p3_number.text = String(team2_players[2].number)
+        team2_p3_firstname.text = team2_players[2].firstname
+        team2_p3_lastname.text = team2_players[2].lastname
+        
+        team2_p4_number.text = String(team2_players[3].number)
+        team2_p4_firstname.text = team2_players[3].firstname
+        team2_p4_lastname.text = team2_players[3].lastname
+        
+        team2_p5_number.text = String(team2_players[4].number)
+        team2_p5_firstname.text = team2_players[4].firstname
+        team2_p5_lastname.text = team2_players[4].lastname
+    }
+    
+    func updateGoals() {
+        team1_p1_goals.text = String(team1_players[0].goals)
+        team1_p1_assists.text = String(team1_players[0].passes)
+        
+        team1_p2_goals.text = String(team1_players[1].goals)
+        team1_p2_assists.text = String(team1_players[1].passes)
+        
+        team1_p3_goals.text = String(team1_players[2].goals)
+        team1_p3_assists.text = String(team1_players[2].passes)
+        
+        team1_p4_goals.text = String(team1_players[3].goals)
+        team1_p4_assists.text = String(team1_players[3].passes)
+        
+        team1_p5_goals.text = String(team1_players[4].goals)
+        team1_p5_assists.text = String(team1_players[4].passes)
+        
+        
+        team2_p1_goals.text = String(team2_players[0].goals)
+        team2_p1_assists.text = String(team2_players[0].passes)
+        
+        team2_p2_goals.text = String(team2_players[1].goals)
+        team2_p2_assists.text = String(team2_players[1].passes)
+        
+        team2_p3_goals.text = String(team2_players[2].goals)
+        team2_p3_assists.text = String(team2_players[2].passes)
+        
+        team2_p4_goals.text = String(team2_players[3].goals)
+        team2_p4_assists.text = String(team2_players[3].passes)
+        
+        team2_p5_goals.text = String(team2_players[4].goals)
+        team2_p5_assists.text = String(team2_players[4].passes)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -185,68 +381,23 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
 
     @IBAction func period_button_click(sender: UIButton) {
-        let label_button:String = (period_button.titleLabel?.text)! as String
+        let label_button:String = (period.text)!
         switch label_button {
-        case "Débuter":
-            team1_name.enabled = false
-            team2_name.enabled = false
-            
-            team1_p1_number.enabled = false
-            team1_p1_firstname.enabled = false
-            team1_p1_lastname.enabled = false
-            team1_p2_number.enabled = false
-            team1_p2_firstname.enabled = false
-            team1_p2_lastname.enabled = false
-            team1_p3_number.enabled = false
-            team1_p3_firstname.enabled = false
-            team1_p3_lastname.enabled = false
-            team1_p4_number.enabled = false
-            team1_p4_firstname.enabled = false
-            team1_p4_lastname.enabled = false
-            team1_p5_number.enabled = false
-            team1_p5_firstname.enabled = false
-            team1_p5_lastname.enabled = false
-            
-            team2_p1_number.enabled = false
-            team2_p1_firstname.enabled = false
-            team2_p1_lastname.enabled = false
-            team2_p2_number.enabled = false
-            team2_p2_firstname.enabled = false
-            team2_p2_lastname.enabled = false
-            team2_p3_number.enabled = false
-            team2_p3_firstname.enabled = false
-            team2_p3_lastname.enabled = false
-            team2_p4_number.enabled = false
-            team2_p4_firstname.enabled = false
-            team2_p4_lastname.enabled = false
-            team2_p5_number.enabled = false
-            team2_p5_firstname.enabled = false
-            team2_p5_lastname.enabled = false
-            
-            period_button.setTitle("Prochaine période", forState: .Normal)
-            period.text = "1"
-            
-            self.team1_players.append(Player(number: 94, firstname: "Frederic", lastname: "Desroches"))
-            self.team1_goal_picker.reloadAllComponents()
-            
-            self.team2_players.append(Player(number: 34, firstname: "Felix", lastname: "Hubert"))
-            self.team2_goal_picker.reloadAllComponents()
-            
+        case "0":
+            self.startGameFields()
             break
-        case "Prochaine période":
-            if(period.text == "1") {
-                period.text = "2"
-            } else {
-                period.text = "3"
-                period_button.setTitle("Terminer la partie", forState: .Normal)
-            }
+        case "1":
+            period.text = "2"
+        case "2":
+            period.text = "3"
+            period_button.setTitle("Terminer la partie", forState: .Normal)
+            break
+        case "3":
+            period_button.enabled = false
             break
         default:
             print("Default case")
             break
-        }
-        if period_button.titleLabel?.text == "Débuter" {
-            
         }
     }
     
