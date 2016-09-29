@@ -26,6 +26,9 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var team1_players: [Player] = []
     var team2_players: [Player] = []
     
+    var team1_global_score = 0
+    var team2_global_score = 0
+    
     var team1_scorer: Int = -1;
     var team1_assist1: Int = -1;
     var team1_assist2: Int = -1;
@@ -378,6 +381,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     func updateGoals() {
+        team1_score.text = String(team1_global_score)
+        
         team1_p1_goals.text = String(team1_players[0].goals)
         team1_p1_assists.text = String(team1_players[0].passes)
         
@@ -393,6 +398,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         team1_p5_goals.text = String(team1_players[4].goals)
         team1_p5_assists.text = String(team1_players[4].passes)
         
+        team2_score.text = String(team2_global_score)
         
         team2_p1_goals.text = String(team2_players[0].goals)
         team2_p1_assists.text = String(team2_players[0].passes)
@@ -438,6 +444,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func team1_add_goal_click(sender: UIButton) {
         let index_goal:Int = team1_goal_picker.selectedRowInComponent(0)
+        team1_global_score += 1
         team1_players[index_goal - 1].goals += 1;
         
         let index_assist1:Int = team1_goal_picker.selectedRowInComponent(1)
@@ -456,6 +463,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     @IBAction func team2_add_goal_click(sender: UIButton) {
         let index_goal:Int = team2_goal_picker.selectedRowInComponent(0)
+        team2_global_score += 1
         team2_players[index_goal - 1].goals += 1;
         
         let index_assist1:Int = team2_goal_picker.selectedRowInComponent(1)
