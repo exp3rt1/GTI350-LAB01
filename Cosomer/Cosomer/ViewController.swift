@@ -143,21 +143,21 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         if (component == 0) {
             if (row == 0) {
-                return "Buteur"
+                return " - Buteur - "
             }
             else {
                 return String(source[row - 1].number) + " - " + source[row - 1].lastname
             }
         } else if (component == 1) {
             if (row == 0) {
-                return "Passeur 1"
+                return " - Passeur 1 - "
             }
             else {
                 return String(source[row - 1].number) + " - " + source[row - 1].lastname
             }
         } else if (component == 2) {
             if (row == 0) {
-                return "Passeur 2"
+                return " - Passeur 2 - "
             }
             else {
                 return String(source[row - 1].number) + " - " + source[row - 1].lastname
