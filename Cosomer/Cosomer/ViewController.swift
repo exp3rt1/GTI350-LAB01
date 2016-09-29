@@ -508,6 +508,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         // Add goal to list
         goals.append((periodCount, team1_name.text!, goaler, assist1, assist2))
         goalTable.reloadData()
+        
+        // Reset picker
+        team1_goal_picker.selectRow(0, inComponent: 0, animated: false)
+        team1_goal_picker.selectRow(0, inComponent: 1, animated: false)
+        team1_goal_picker.selectRow(0, inComponent: 2, animated: false)
+        team1_add_goal.enabled = false
     }
     
     @IBAction func team2_add_goal_click(sender: UIButton) {
@@ -537,6 +543,12 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         // Add goal to list
         goals.append((periodCount, team2_name.text!, goaler, assist1, assist2))
         goalTable.reloadData()
+        
+        // Reset picker
+        team2_goal_picker.selectRow(0, inComponent: 0, animated: false)
+        team2_goal_picker.selectRow(0, inComponent: 1, animated: false)
+        team2_goal_picker.selectRow(0, inComponent: 2, animated: false)
+        team2_add_goal.enabled = false
     }
 }
 
