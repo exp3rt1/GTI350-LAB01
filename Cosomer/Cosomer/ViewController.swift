@@ -22,20 +22,16 @@ class Player {
     }
 }
 
-class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource {
     var team1_players: [Player] = []
     var team2_players: [Player] = []
     
     var team1_global_score = 0
     var team2_global_score = 0
     
-    var team1_scorer: Int = -1;
-    var team1_assist1: Int = -1;
-    var team1_assist2: Int = -1;
+    var periodCount = 1
     
-    var team2_scorer: Int = -1;
-    var team2_assist1: Int = -1;
-    var team2_assist2: Int = -1;
+    var goals: [(Int, String, Player, Player?, Player?)] = []
     
     @IBOutlet weak var period: UILabel!
     @IBOutlet weak var period_button: UIButton!
@@ -118,13 +114,13 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var team1_goal_picker: UIPickerView!
     @IBOutlet weak var team2_goal_picker: UIPickerView!
     
+    // Table
+    @IBOutlet weak var goalTable: UITableView!    
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        print("loaded")
-        
+        // Do any additional setup after loading the view, typically from a nib.à        
         // Picker views
         self.team1_goal_picker.layer.borderColor = UIColor.grayColor().CGColor
         self.team1_goal_picker.layer.borderWidth = 1
@@ -141,6 +137,11 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         
         self.team2_goal_picker.dataSource = self
         self.team2_goal_picker.delegate = self
+        
+        self.goalTable.dataSource = self
+        self.goalTable.delegate = self
+        
+        self.goalTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -212,6 +213,40 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         button.enabled = enabled
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return goals.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: UITableViewCell = self.goalTable.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+        
+        let line = goals[indexPath.row]
+        let goaler = line.2
+        let assist1 = line.3
+        let assist2 = line.4
+        
+        var label = "Période : " + String(line.0)
+        label += ", " + line.1 + ", "
+            
+        label += goaler.lastname
+        
+        if (assist1 != nil) {
+            label += ", " + assist1!.lastname
+        }
+        
+        if (assist2 != nil) {
+            label += ", " + assist2!.lastname
+        }
+        
+        cell.textLabel?.text = label
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
     func startGameFields() {
         team1_name.enabled = false
         team2_name.enabled = false
@@ -252,6 +287,8 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         self.team1_add_goal.hidden = false
         self.team2_goal_picker.hidden = false
         self.team2_add_goal.hidden = false
+    
+        self.goalTable.hidden = false
         
         period_button.setTitle("Prochaine période", forState: .Normal)
         period.text = "1"
@@ -429,8 +466,10 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             break
         case "1":
             period.text = "2"
+            periodCount = 2
         case "2":
             period.text = "3"
+            periodCount = 3
             period_button.setTitle("Terminer la partie", forState: .Normal)
             break
         case "3":
@@ -443,40 +482,61 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     }
     
     @IBAction func team1_add_goal_click(sender: UIButton) {
+        var goaler: Player
+        var assist1: Player?
+        var assist2: Player?
+        
         let index_goal:Int = team1_goal_picker.selectedRowInComponent(0)
         team1_global_score += 1
         team1_players[index_goal - 1].goals += 1;
+        goaler = team1_players[index_goal - 1]
         
         let index_assist1:Int = team1_goal_picker.selectedRowInComponent(1)
         if(index_assist1 != 0) {
             team1_players[index_assist1 - 1].passes += 1;
+            assist1 = team1_players[index_assist1 - 1]
         }
         
         let index_assist2:Int = team1_goal_picker.selectedRowInComponent(2)
         if(index_assist2 != 0) {
             team1_players[index_assist2 - 1].passes += 1;
+            assist2 = team1_players[index_assist2 - 1]
         }
         
         updateGoals()
         
+        // Add goal to list
+        goals.append((periodCount, team1_name.text!, goaler, assist1, assist2))
+        goalTable.reloadData()
     }
     
     @IBAction func team2_add_goal_click(sender: UIButton) {
+        var goaler: Player
+        var assist1: Player?
+        var assist2: Player?
+
         let index_goal:Int = team2_goal_picker.selectedRowInComponent(0)
         team2_global_score += 1
         team2_players[index_goal - 1].goals += 1;
+        goaler = team2_players[index_goal - 1]
         
         let index_assist1:Int = team2_goal_picker.selectedRowInComponent(1)
         if(index_assist1 != 0) {
             team2_players[index_assist1 - 1].passes += 1;
+            assist1 = team2_players[index_assist1 - 1]
         }
         
         let index_assist2:Int = team2_goal_picker.selectedRowInComponent(2)
         if(index_assist2 != 0) {
             team2_players[index_assist2 - 1].passes += 1;
+            assist2 = team2_players[index_assist2 - 1]
         }
         
         updateGoals()
+        
+        // Add goal to list
+        goals.append((periodCount, team2_name.text!, goaler, assist1, assist2))
+        goalTable.reloadData()
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -87,16 +87,6 @@
                                     <rect key="frame" x="662" y="118" width="42" height="21"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7G5-sE-hSj">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="Débuter"/>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="623" y="147" width="120" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="period_button_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tOM-PE-B9l"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6kT-Fw-ZJ2">
                                 <rect key="frame" x="-25" y="-30" width="97" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -647,6 +637,27 @@
                                     <outlet property="delegate" destination="8bC-Xf-vdC" id="OTI-Yk-jDM"/>
                                 </connections>
                             </pickerView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="v9T-RI-knT">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="24" y="694" width="1322" height="322"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="8bC-Xf-vdC" id="fX3-sA-VHz"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="lF3-ss-OLy"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7G5-sE-hSj">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Débuter"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="583" y="147" width="200" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="period_button_click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tOM-PE-B9l"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -655,7 +666,6 @@
                                 <exclude reference="Bnr-Z3-wUG"/>
                                 <exclude reference="0dG-6J-tZe"/>
                                 <exclude reference="zf0-nw-aMn"/>
-                                <exclude reference="7G5-sE-hSj"/>
                                 <exclude reference="6kT-Fw-ZJ2"/>
                                 <exclude reference="E9m-4I-0Gr"/>
                                 <exclude reference="Lrq-mP-qNW"/>
@@ -720,6 +730,8 @@
                                 <exclude reference="g97-GK-ezr"/>
                                 <exclude reference="ZE1-T7-Jkc"/>
                                 <exclude reference="g97-Bj-zEt"/>
+                                <exclude reference="v9T-RI-knT"/>
+                                <exclude reference="7G5-sE-hSj"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -728,7 +740,6 @@
                                 <include reference="Bnr-Z3-wUG"/>
                                 <include reference="0dG-6J-tZe"/>
                                 <include reference="zf0-nw-aMn"/>
-                                <include reference="7G5-sE-hSj"/>
                                 <include reference="6kT-Fw-ZJ2"/>
                                 <include reference="E9m-4I-0Gr"/>
                                 <include reference="Lrq-mP-qNW"/>
@@ -793,12 +804,15 @@
                                 <include reference="g97-GK-ezr"/>
                                 <include reference="ZE1-T7-Jkc"/>
                                 <include reference="g97-Bj-zEt"/>
+                                <include reference="v9T-RI-knT"/>
+                                <include reference="7G5-sE-hSj"/>
                             </mask>
                         </variation>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPadPro"/>
                     <connections>
+                        <outlet property="goalTable" destination="v9T-RI-knT" id="52Y-Z0-aC5"/>
                         <outlet property="period" destination="zf0-nw-aMn" id="9RK-jN-Q4Z"/>
                         <outlet property="period_button" destination="7G5-sE-hSj" id="RWi-bu-t3B"/>
                         <outlet property="team1_add_goal" destination="g97-GK-ezr" id="5OT-uD-7Pu"/>
