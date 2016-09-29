@@ -26,6 +26,14 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     var team1_players: [Player] = []
     var team2_players: [Player] = []
     
+    var team1_scorer: Int = -1;
+    var team1_assist1: Int = -1;
+    var team1_assist2: Int = -1;
+    
+    var team2_scorer: Int = -1;
+    var team2_assist1: Int = -1;
+    var team2_assist2: Int = -1;
+    
     @IBOutlet weak var period: UILabel!
     @IBOutlet weak var period_button: UIButton!
     
@@ -140,26 +148,32 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let source = pickerView.tag == 0 ? team1_players : team2_players
-        
+        print("source = " + String(pickerView.tag));
         if (component == 0) {
             if (row == 0) {
+                print("buteur");
                 return "Buteur"
             }
             else {
+                print(String(source[row - 1].number) + " - " + source[row - 1].lastname);
                 return String(source[row - 1].number) + " - " + source[row - 1].lastname
             }
         } else if (component == 1) {
             if (row == 0) {
+                print("Passeur 1");
                 return "Passeur 1"
             }
             else {
+                print(String(source[row - 1].number) + " - " + source[row - 1].lastname);
                 return String(source[row - 1].number) + " - " + source[row - 1].lastname
             }
         } else if (component == 2) {
             if (row == 0) {
+                print("Passeur 2");
                 return "Passeur 2"
             }
             else {
+                print(String(source[row - 1].number) + " - " + source[row - 1].lastname);
                 return String(source[row - 1].number) + " - " + source[row - 1].lastname
             }
         }
