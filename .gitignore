@@ -59,5 +59,7 @@ fastlane/screenshots
 
 iOSInjectionProject/
 
+Cosomer/Cosomer/Base.lproj/Main.storyboard
+
 # La scrap
 .DS_Store
