@@ -14,17 +14,23 @@ class Player {
     var lastname: String = "DefaultLastName"
     var goals: Int = 0
     var passes: Int = 0
+    var points: Int = 0
+    var team: Int = 1
+    var id = -1
     
-    init(number: Int, firstname: String, lastname: String) {
+    init(number: Int, firstname: String, lastname: String, team: Int, id: Int) {
         self.number = number
         self.firstname = firstname
         self.lastname = lastname
+        self.team = team
+        self.id = id
     }
 }
 
 class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource {
     var team1_players: [Player] = []
     var team2_players: [Player] = []
+    var sortedTwoTeamPoint: [Player]  = []
     
     var team1_global_score = 0
     var team2_global_score = 0
@@ -293,77 +299,97 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         period_button.setTitle("Prochaine période", forState: .Normal)
         period.text = "1"
         
-        
+ 
         self.team1_players.append(
             Player(
-                number: (team1_p1_number.text == nil) ? Int(team1_p1_number.text!)! : 0,
-                firstname: (team1_p1_firstname == nil) ? team1_p1_firstname.text! : "Player1_FirstName",
-                lastname: (team1_p1_lastname == nil) ? team1_p1_lastname.text! : "Player1_LastName"
+                number: (team1_p1_number.text != "") ? Int(team1_p1_number.text!)! : 0,
+                firstname: (team1_p1_firstname.text != "") ? team1_p1_firstname.text! : "Player1_FirstName",
+                lastname: (team1_p1_lastname.text != "") ? team1_p1_lastname.text! : "Player1_LastName",
+                team: 1,
+                id: 0
             )
         )
         self.team1_players.append(
             Player(
-                number: (team1_p2_number.text == nil) ? Int(team1_p2_number.text!)! : 0,
-                firstname: (team1_p2_firstname == nil) ? team1_p2_firstname.text! : "Player2_FirstName",
-                lastname: (team1_p2_lastname == nil) ? team1_p2_lastname.text! : "Player2_LastName"
+                number: (team1_p2_number.text != "") ? Int(team1_p2_number.text!)! : 0,
+                firstname: (team1_p2_firstname.text != "") ? team1_p2_firstname.text! : "Player2_FirstName",
+                lastname: (team1_p2_lastname.text != "") ? team1_p2_lastname.text! : "Player2_LastName",
+                team: 1,
+                id: 1
             )
         )
         self.team1_players.append(
             Player(
-                number: (team1_p3_number.text == nil) ? Int(team1_p3_number.text!)! : 0,
-                firstname: (team1_p3_firstname == nil) ? team1_p3_firstname.text! : "Player3_FirstName",
-                lastname: (team1_p3_lastname == nil) ? team1_p3_lastname.text! : "Player3_LastName"
+                number: (team1_p3_number.text != "") ? Int(team1_p3_number.text!)! : 0,
+                firstname: (team1_p3_firstname.text != "") ? team1_p3_firstname.text! : "Player3_FirstName",
+                lastname: (team1_p3_lastname.text != "") ? team1_p3_lastname.text! : "Player3_LastName",
+                team: 1,
+                id: 2
             )
         )
         self.team1_players.append(
             Player(
-                number: (team1_p4_number.text == nil) ? Int(team1_p4_number.text!)! : 0,
-                firstname: (team1_p4_firstname == nil) ? team1_p4_firstname.text! : "Player4_FirstName",
-                lastname: (team1_p4_lastname == nil) ? team1_p4_lastname.text! : "Player4_LastName"
+                number: (team1_p4_number.text != "") ? Int(team1_p4_number.text!)! : 0,
+                firstname: (team1_p4_firstname.text != "") ? team1_p4_firstname.text! : "Player4_FirstName",
+                lastname: (team1_p4_lastname.text != "") ? team1_p4_lastname.text! : "Player4_LastName",
+                team: 1,
+                id: 3
             )
         )
         self.team1_players.append(
             Player(
-                number: (team1_p5_number.text == nil) ? Int(team1_p5_number.text!)! : 0,
-                firstname: (team1_p5_firstname == nil) ? team1_p5_firstname.text! : "Player5_FirstName",
-                lastname: (team1_p5_lastname == nil) ? team1_p5_lastname.text! : "Player5_LastName"
+                number: (team1_p5_number.text != "") ? Int(team1_p5_number.text!)! : 0,
+                firstname: (team1_p5_firstname.text != "") ? team1_p5_firstname.text! : "Player5_FirstName",
+                lastname: (team1_p5_lastname.text != "") ? team1_p5_lastname.text! : "Player5_LastName",
+                team: 1,
+                id: 4
             )
         )
         self.team1_goal_picker.reloadAllComponents()
         
         self.team2_players.append(
             Player(
-                number: (team2_p1_number.text == nil) ? Int(team2_p1_number.text!)! : 0,
-                firstname: (team2_p1_firstname == nil) ? team2_p1_firstname.text! : "Player1_FirstName",
-                lastname: (team2_p1_lastname == nil) ? team2_p1_lastname.text! : "Player1_LastName"
+                number: (team2_p1_number.text != "") ? Int(team2_p1_number.text!)! : 0,
+                firstname: (team2_p1_firstname.text != "") ? team2_p1_firstname.text! : "Player1_FirstName",
+                lastname: (team2_p1_lastname.text != "") ? team2_p1_lastname.text! : "Player1_LastName",
+                team: 2,
+                id: 5
             )
         )
         self.team2_players.append(
             Player(
-                number: (team2_p2_number.text == nil) ? Int(team2_p2_number.text!)! : 0,
-                firstname: (team2_p2_firstname == nil) ? team2_p2_firstname.text! : "Player2_FirstName",
-                lastname: (team2_p2_lastname == nil) ? team2_p2_lastname.text! : "Player2_LastName"
+                number: (team2_p2_number.text != "") ? Int(team2_p2_number.text!)! : 0,
+                firstname: (team2_p2_firstname.text != "") ? team2_p2_firstname.text! : "Player2_FirstName",
+                lastname: (team2_p2_lastname.text != "") ? team2_p2_lastname.text! : "Player2_LastName",
+                team: 2,
+                id: 6
             )
         )
         self.team2_players.append(
             Player(
-                number: (team2_p3_number.text == nil) ? Int(team2_p3_number.text!)! : 0,
-                firstname: (team2_p3_firstname == nil) ? team2_p3_firstname.text! : "Player3_FirstName",
-                lastname: (team2_p3_lastname == nil) ? team2_p3_lastname.text! : "Player3_LastName"
+                number: (team2_p3_number.text != "") ? Int(team2_p3_number.text!)! : 0,
+                firstname: (team2_p3_firstname.text != "") ? team2_p3_firstname.text! : "Player3_FirstName",
+                lastname: (team2_p3_lastname.text != "") ? team2_p3_lastname.text! : "Player3_LastName",
+                team: 2,
+                id: 7
             )
         )
         self.team2_players.append(
             Player(
-                number: (team2_p4_number.text == nil) ? Int(team2_p4_number.text!)! : 0,
-                firstname: (team2_p4_firstname == nil) ? team2_p4_firstname.text! : "Player4_FirstName",
-                lastname: (team2_p4_lastname == nil) ? team2_p4_lastname.text! : "Player4_LastName"
+                number: (team2_p4_number.text != "") ? Int(team2_p4_number.text!)! : 0,
+                firstname: (team2_p4_firstname.text != "") ? team2_p4_firstname.text! : "Player4_FirstName",
+                lastname: (team2_p4_lastname.text != "") ? team2_p4_lastname.text! : "Player4_LastName",
+                team: 2,
+                id: 8
             )
         )
         self.team2_players.append(
             Player(
-                number: (team2_p5_number.text == nil) ? Int(team2_p5_number.text!)! : 0,
-                firstname: (team2_p5_firstname == nil) ? team2_p5_firstname.text! : "Player5_FirstName",
-                lastname: (team2_p5_lastname == nil) ? team2_p5_lastname.text! : "Player5_LastName"
+                number: (team2_p5_number.text != "") ? Int(team2_p5_number.text!)! : 0,
+                firstname: (team2_p5_firstname.text != "") ? team2_p5_firstname.text! : "Player5_FirstName",
+                lastname: (team2_p5_lastname.text != "") ? team2_p5_lastname.text! : "Player5_LastName",
+                team: 2,
+                id: 9
             )
         )
         self.team2_goal_picker.reloadAllComponents()
@@ -452,7 +478,138 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         team2_p5_goals.text = String(team2_players[4].goals)
         team2_p5_assists.text = String(team2_players[4].passes)
     }
+    
+    func distributeStars() {
 
+        var potentialFirstStars: [Player] = []
+        var potentialSecondStars: [Player] = []
+        var potentialThirdStars: [Player] = []
+        
+        var teamWin = -1
+        
+        let theFirstStar: Player
+        let theSecondStar: Player
+        let theThirdStar: Player
+ 
+        sortedTwoTeamPoint = team1_players + team2_players
+        sortedTwoTeamPoint.sortInPlace({ $0.points > $1.points })
+        
+        if(team1_global_score > team2_global_score){
+            teamWin = 1;
+        }else if (team1_global_score < team2_global_score){
+            teamWin = 2;
+        }else{
+            teamWin = -1;
+        }
+        
+        ///////////////////////////////////////////////////////////////
+        // 1ere etoile
+
+        for i in (0..<(sortedTwoTeamPoint.count))  {
+          if(sortedTwoTeamPoint[i].team == teamWin || teamWin == -1){//on regarde l equipe gagnante, ou si match null
+                if(potentialFirstStars.count == 0){
+                    potentialFirstStars.append(sortedTwoTeamPoint[i])
+                }else{
+                    if(sortedTwoTeamPoint[i].points == potentialFirstStars[0].points){
+                        potentialFirstStars.append(sortedTwoTeamPoint[i])
+                    }
+                }
+            }
+        }
+        
+        if(potentialFirstStars.count > 1){
+            theFirstStar = makeAchoiceOfEqualite(potentialFirstStars)
+            
+        }else{
+            theFirstStar = potentialFirstStars[0]
+            
+        }
+        
+        let nbOfItem = sortedTwoTeamPoint.count
+        for i in (0...(nbOfItem - 1)).reverse()  {
+            if(sortedTwoTeamPoint[i].id == theFirstStar.id){
+                sortedTwoTeamPoint.removeAtIndex(i)
+            }
+        }
+        
+        ///////////////////////////////////////////////////////////////
+        // 2e etoile
+
+        potentialSecondStars.append(sortedTwoTeamPoint[0])
+        
+        for i in (1..<(sortedTwoTeamPoint.count))  {
+            if(sortedTwoTeamPoint[i].points == potentialSecondStars[0].points){
+                potentialSecondStars.append(sortedTwoTeamPoint[i])
+            }
+        }
+        
+        if(potentialSecondStars.count > 1){
+            theSecondStar = makeAchoiceOfEqualite(potentialSecondStars)
+            
+        }else{
+            theSecondStar = potentialSecondStars[0]
+        }
+        
+        let nbOfItem2 = sortedTwoTeamPoint.count
+        for i in (0...(nbOfItem2 - 1)).reverse()  {
+            if(sortedTwoTeamPoint[i].id == theSecondStar.id){
+                sortedTwoTeamPoint.removeAtIndex(i)
+            }
+        }
+
+        ///////////////////////////////////////////////////////////////
+        // 3e etoile
+
+        potentialThirdStars.append(sortedTwoTeamPoint[0])
+        
+        for i in (1..<(sortedTwoTeamPoint.count))  {
+            if(sortedTwoTeamPoint[i].points == potentialThirdStars[0].points){
+                potentialSecondStars.append(sortedTwoTeamPoint[i])
+            }
+        }
+
+        if(potentialThirdStars.count > 1){
+            theThirdStar = makeAchoiceOfEqualite(potentialThirdStars)
+            
+        }else{
+            theThirdStar = potentialThirdStars[0]
+        }
+        
+        ///////////////////////////////////////////////////////////////
+        
+        let messageEtoile:String = "" +
+        "1 : " + String(theFirstStar.lastname) + " " + String(theFirstStar.goals) + "B " + String(theFirstStar.passes) + "P" + "\n" +
+        "2 : " + String(theSecondStar.lastname) + " " + String(theSecondStar.goals) + "B " + String(theSecondStar.passes) + "P" + "\n" +
+        "3 : " + String(theThirdStar.lastname) + " " + String(theThirdStar.goals) + "B " + String(theThirdStar.passes) + "P" + "\n"
+        
+        let alert = UIAlertController(title: "Étoiles...", message: messageEtoile, preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func makeAchoiceOfEqualite(stars :  [Player] )-> Player{
+        
+        var sortedGoal : [Player] = stars.sort({ $0.goals > $1.goals })
+        var winnerOfStar : Player = sortedGoal[0]
+
+        let nbSortedGoal = sortedGoal.count
+        for i in (1...(nbSortedGoal - 1 )).reverse()  {
+            
+            if(sortedGoal[i].goals < winnerOfStar.goals){
+               sortedGoal.removeAtIndex(i)
+            }
+        }
+        
+        if(sortedGoal.count > 1){
+            let randomIndex = Int(arc4random_uniform(UInt32(sortedGoal.count)))//random
+            winnerOfStar = sortedGoal[randomIndex]
+        }
+        
+        return winnerOfStar
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -474,11 +631,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             break
         case "3":
             period_button.enabled = false
-            
-            let alert = UIAlertController(title: "Alert", message: "test", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-
+            distributeStars()
             break
         default:
             print("Default case")
@@ -494,17 +647,20 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         let index_goal:Int = team1_goal_picker.selectedRowInComponent(0)
         team1_global_score += 1
         team1_players[index_goal - 1].goals += 1;
+        team1_players[index_goal - 1].points += 1;
         goaler = team1_players[index_goal - 1]
         
         let index_assist1:Int = team1_goal_picker.selectedRowInComponent(1)
         if(index_assist1 != 0) {
             team1_players[index_assist1 - 1].passes += 1;
+            team1_players[index_assist1 - 1].points += 1;
             assist1 = team1_players[index_assist1 - 1]
         }
         
         let index_assist2:Int = team1_goal_picker.selectedRowInComponent(2)
         if(index_assist2 != 0) {
             team1_players[index_assist2 - 1].passes += 1;
+            team1_players[index_assist2 - 1].points += 1;
             assist2 = team1_players[index_assist2 - 1]
         }
         
@@ -529,17 +685,20 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         let index_goal:Int = team2_goal_picker.selectedRowInComponent(0)
         team2_global_score += 1
         team2_players[index_goal - 1].goals += 1;
+        team2_players[index_goal - 1].points += 1;
         goaler = team2_players[index_goal - 1]
         
         let index_assist1:Int = team2_goal_picker.selectedRowInComponent(1)
         if(index_assist1 != 0) {
             team2_players[index_assist1 - 1].passes += 1;
+            team2_players[index_assist1 - 1].points += 1;
             assist1 = team2_players[index_assist1 - 1]
         }
         
         let index_assist2:Int = team2_goal_picker.selectedRowInComponent(2)
         if(index_assist2 != 0) {
             team2_players[index_assist2 - 1].passes += 1;
+            team2_players[index_assist2 - 1].points += 1;
             assist2 = team2_players[index_assist2 - 1]
         }
         
